@@ -7,5 +7,58 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(GGally)
+library(tidyverse)
+library(skimr)
 ```
+
+### Exploring the dataset 
+
+```{r}
+# column names
+names(diamonds)
+
+# checkin out the dimentions
+dim(diamonds)
+
+# looking at everything 
+summary(diamonds)
+
+# top six lines 
+head(diamonds)
+
+# looking at teh last six lines 
+tail(diamonds)
+
+#another way to look at summary stuff 
+skimr::skim(diamonds)
+
+```
+
+### And now we are making a plot 
+
+```{r}
+GGally::ggpairs(data = diamonds) # jeez this thing is intense 
+```
+
+### And now a ggplot of price v size 
+
+```{r}
+ggplot(data = diamonds, aes(x = carat, y = price)) +
+  geom_point()
+```
+
+### And now  histogram of the `carat` column
+
+```{r}
+ggplot(data = diamonds, aes(x = carat)) +
+  geom_histogram()
+```
+
+
+
+
+
+
+
 
